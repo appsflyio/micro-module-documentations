@@ -33,6 +33,15 @@ microapp_handle : `com.cleartrip.microservices.local.activities`
 
 City list api will list all the available cities and there product type availability in that city. The search request is a simple HTTP GET request. The sample request described below should be sent along with the URL, and the user’s API key in the HTTP headers. A successful response will always return the HTTP status code 200. (Note that a status code of 200 doesn’t necessarily mean that the search result will be returned; but a successful search will always return a status code of 200).
 
+### Payload
+```
+{
+  "intent":"fetch_cities",
+  "data":{
+  }
+}
+```
+
 ### Response Body
 ```
 "bangalore": {
@@ -544,6 +553,15 @@ microapp_handle : `com.cleartrip.microservices.local.eatouts`
 `fetch_city_list`
 
 City list api will list all the available cities and there product type availability in that city. The search request is a simple HTTP GET request. The sample request described below should be sent along with the URL, and the user’s API key in the HTTP headers. A successful response will always return the HTTP status code 200. (Note that a status code of 200 doesn’t necessarily mean that the search result will be returned; but a successful search will always return a status code of 200).
+
+### Payload
+```
+{
+  "intent":"fetch_cities",
+  "data":{
+  }
+}
+```
 
 ### Response Body
 ```
