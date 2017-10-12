@@ -2,11 +2,11 @@
 
 1. Local Activities
 
-  * Book Itenerary
+    * Book Itenerary
   
 2. Local Eatout
   
-  * Booking Itenerary
+    * Booking Itenerary
 
 
 ## Local Activities
