@@ -28,7 +28,7 @@ microapp_handle : `com.cleartrip.microservices.local.activities`
 | EMAIL | User's email. Booking confirmation will be sent to this email |
 | MOBILE_NO | User's mobile number. SMS Confirmation will be sent to this mobile number |
 
-#### Payload
+#### Request Payload
 ```
 {
   "itineraryid":"${ITENERARY_ID}",
