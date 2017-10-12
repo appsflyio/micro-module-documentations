@@ -1,7 +1,6 @@
 # ClearTrip Micro Services
 
 1. [Local Activities](#local-activities)
-
     * [City List](#11-book-itenerary)
     * [Collections List](#11-book-itenerary)
     * [Activity List](#11-book-itenerary)
@@ -12,7 +11,6 @@
     * [Book Itinerary](#11-book-itenerary)
   
 2. [Local Eatout](#local-activities)
-  
     * [City List](#11-book-itenerary)
     * [Restaurants List](#11-book-itenerary)
     * [Eatouts List](#11-book-itenerary)
