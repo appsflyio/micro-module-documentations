@@ -1,24 +1,24 @@
 # ClearTrip Micro Services
 
 1. [Local Activities](#local-activities)
-    * [City List](#11-book-itenerary)
-    * [Collections List](#11-book-itenerary)
-    * [Activity List](#11-book-itenerary)
-    * [Activity Details](#11-book-itenerary)
-    * [Search City](#11-book-itenerary)
-    * [Check Availability](#11-book-itenerary)
-    * [Create Itinerary](#11-book-itenerary)
-    * [Book Itinerary](#11-book-itenerary)
+    * [City List](#11-city-list)
+    * [Collections List](#12-collections-list)
+    * [Activity List](#13-activity-list)
+    * [Activity Details](#14-activity-details)
+    * [Search City](#15-search-city)
+    * [Check Availability](#16-check-availability)
+    * [Create Itinerary](#17-create-itinerary)
+    * [Book Itinerary](#18-book-itinerary)
   
-2. [Local Eatout](#local-activities)
-    * [City List](#11-book-itenerary)
-    * [Restaurants List](#11-book-itenerary)
-    * [Eatouts List](#11-book-itenerary)
-    * [Eatout Details](#11-book-itenerary)
-    * [Search City](#11-book-itenerary)
-    * [Check Availability](#11-book-itenerary)
-    * [Create Itinerary](#11-book-itenerary)
-    * [Book Itinerary](#11-book-itenerary-1)
+2. [Local Eatout](#local-eatout)
+    * [City List](#21-city-list)
+    * [Restaurants List](#22-restaurants-list)
+    * [Eatouts List](#23-eatouts-list)
+    * [Eatout Details](#24-eatout-details)
+    * [Search City](#25-search-city)
+    * [Check Availability](#26-check-availability)
+    * [Create Itinerary](#27-create-itinerary)
+    * [Book Itinerary](#28-book-itinerary)
     
 
 --------------------------------------------------------------------------------
@@ -26,25 +26,37 @@
 ## Local Activities 
 
 microapp_handle : `com.cleartrip.microservices.local.activities`
-
 ### 1.1 City List
 
 #### Intent
 `fetch_cities`
 
-### Response Params Description
-| KEY | DESCRIPTION |
-| ---|--- |
-| CITY_NAME | Name of city |
+City list api will list all the available cities and there product type availability in that city. The search request is a simple HTTP GET request. The sample request described below should be sent along with the URL, and the user’s API key in the HTTP headers. A successful response will always return the HTTP status code 200. (Note that a status code of 200 doesn’t necessarily mean that the search result will be returned; but a successful search will always return a status code of 200).
+
+### Payload
+```
+{
+  "intent":"fetch_cities",
+  "data":{
+  }
+}
+```
 
 ### Response Body
 ```
-[
-	{
-		"name":"${CITY_NAME}"
-	}...
-]
+"bangalore": {
+        "ttd": true,
+        "count": 1,
+        "fnb": true
+    },
  ```
+### Response Params Description
+| KEY | DESCRIPTION |
+| ---|--- |
+| ttd | Contains True/False based on availability in the corresponding city |
+| fnb | Contains True/False based on availability in the corresponding city |
+
+If the search was successful, the response body returns an JSON along with the HTTP status code 200. If any error is encountered during the search, the response body contains an JSON with the root element error_code. See the schema and sample search result JSON for more details.
 
 
 ### 1.2 Collections List
@@ -52,64 +64,56 @@ microapp_handle : `com.cleartrip.microservices.local.activities`
 #### Intent
 `fetch_collections`
 
-### Request Params Description
-| KEY | DESCRIPTION |
-| ---|--- |
-| CITY_NAME | Name of city |
-
+Provides the Cleartrip Collection Listing for a City. The search request is a simple HTTP GET request. The query parameters described below should be sent along with the search URL, and the user’s API key in the HTTP headers. A successful response will always return the HTTP status code 200. (Note that a status code of 200 doesn’t necessarily mean that the search result will be returned; but a successful search will always return a status code of 200).
+City list api also take tags as optional params and return the data related to tags, otherwise 400 for requested api.
+ 
 ### Payload
 ```
 {
-	"cityName":"${CITY_NAME}"   
+  "intent":"fetch_collections",
+  "data":{
+  	"cityName":"bangalore"   
+  }
 }
 ```
+#### Request Params Description
+
+| KEYWORD | DESCRIPTION |
+| ---|--- |
+| cityName | Name of city |
 
 ### Response Body 
 ```
 {
-	"scr": "${CURRENCY}",
-	"collections"[{
-		"count":${COLLECTION.COUNT},
-		"rank":${COLLECTION.RANK},
-		"id":${COLLECTION.ID},
-		"categories":${COLLECTION.CATEGORIES},
-		"name":${COLLECTION.NAME},
-		"desc":${COLLECTION.DESC},
-		"image":${COLLECTION.IMG}
-	}...],
-	city{
-		"name":${CITY.NAME},
-		"id":${CITY.ID}
-	},
-	categories[{
-		"name":${CATEGORY.NAME},
-		"rank":${CATEGORY.RANK},
-		"id":${CATEGORY.ID}
-	}...],
-	sid : "${SEARCH_ID}"
+scr : "INR",
+collections[],
+city{},
+categories[],
+sid : "5b434caa-5446-43fa-ab39-4b34c6a75e64"
 }
 ```
 
 ### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| CURRENCY | The currency in which the prices of activities are displayed  |
-| COLLECTION | List of collections available on this city and it's details |
-| COLLECTION.COUNT | Number of activities available for this collections |
-| COLLECTION.RANK | Sequence order to show on ui |
-| COLLECTION.ID | Collection id of the collection |
-| COLLECTION.CATEGORIES | List of categories id which this collection belong |
-| COLLECTION.NAME | Name of the collection |
-| COLLECTION.DESC | Description of this collection |
-| COLLECTION.IMG | Image Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url|
-| CITY | City name and city id for further use |
-| CITY.NAME | Name of the city |
-| CITY.ID | Id of the city |
-| CATEGORY | List of all categories for these collections |
-| CATEGORY.NAME | Name of the categories |
-| CATEGORY.RANK | Sequence order of list of categories |
-| CATEGORY.ID | Id of category |
+| currency | The currency in which the prices of activities are displayed  |
+| collections | List of collections available on this city and it's details |
+| collections.count | Number of activities available for this collections |
+| collections.rank | Sequence order to show on ui |
+| collections.id | Collection id of the collection |
+| collections.categories | List of categories id which this collection belong |
+| collections.name | Name of the collection |
+| collections.desc | Description of this collection |
+| collection.image | Image Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url|
+| city | City name and city id for further use |
+| city.name | Name of the city |
+| city.id | Id of the city |
+| categories | List of all categories for these collections |
+| categories.name | Name of the categories |
+| categories.rank | Sequence order of list of categories |
+| categories.id | Id of categories |
 
+If the search was successful, the response body returns an JSON along with the HTTP status code 200. If any error is encountered during the search, the response body contains an JSON with the root element error_code. See the schema and sample search result JSON for more details.
 
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
