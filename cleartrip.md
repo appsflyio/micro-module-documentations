@@ -8,7 +8,7 @@
     * [Activity Details](#11-book-itenerary)
     * [Search City](#11-book-itenerary)
     * [Check Availability](#11-book-itenerary)
-    * [Create itinerary](#11-book-itenerary)
+    * [Create Itinerary](#11-book-itenerary)
     * [Book Itinerary](#11-book-itenerary)
   
 2. [Local Eatout](#local-activities)
@@ -19,7 +19,7 @@
     * [Eatout Details](#11-book-itenerary)
     * [Search City](#11-book-itenerary)
     * [Check Availability](#11-book-itenerary)
-    * [Create itinerary](#11-book-itenerary)
+    * [Create Itinerary](#11-book-itenerary)
     * [Book Itinerary](#11-book-itenerary)
 
 --------------------------------------------------------------------------------
@@ -366,7 +366,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 
 | Please specify the rate id | rate-id is a required field.|
 
-### 1.7 Create itinerary
+### 1.7 Create Itinerary
 
 #### Intent
 
@@ -453,7 +453,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | Please specify the variant id | Missing variant id |
 
 
-### 1.8 Book Itenerary
+### 1.8 Book Itinerary
 
 #### Intent
 `confirm_booking`
@@ -889,7 +889,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 
 | Please specify the rate id | rate-id is a required field.|
 
-### 2.7 Create itinerary
+### 2.7 Create Itinerary
 
 #### Intent
 
@@ -976,7 +976,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | Please specify the rate id | Missing rate id |
 | Please specify the variant id | Missing variant id |
 
-### 2.8 Book Itenerary
+### 2.8 Book Itinerary
 
 #### Intent
 `confirm_booking`
