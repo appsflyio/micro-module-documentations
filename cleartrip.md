@@ -2,11 +2,11 @@
 
 1. [Local Activities](#local-activities)
 
-    * Book Itenerary
+    * [Book Itenerary](#11-book-itenerary)
   
 2. [Local Eatout](#local-activities)
   
-    * Book Itenerary
+    * [Book Itenerary](#11-book-itenerary-1)
 
 --------------------------------------------------------------------------------
 
