@@ -52,7 +52,7 @@ If the search was successful, the response body returns an JSON along with the H
 ### 1.2 Collections List
 
 #### Intent
-`fetch_collections_list_ttd`
+`fetch_collections`
 
 Provides the Cleartrip Collection Listing for a City. The search request is a simple HTTP GET request. The query parameters described below should be sent along with the search URL, and the user’s API key in the HTTP headers. A successful response will always return the HTTP status code 200. (Note that a status code of 200 doesn’t necessarily mean that the search result will be returned; but a successful search will always return a status code of 200).
 City list api also take tags as optional params and return the data related to tags, otherwise 400 for requested api.
@@ -60,7 +60,7 @@ City list api also take tags as optional params and return the data related to t
 ### Payload
 ```
 {
-  "intent":"collections_list_ttd",
+  "intent":"fetch_collections",
   "data":{
   	"cityName":"bangalore"   
   }
@@ -115,7 +115,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ### 1.3 Activity List
 
 #### Intent
-`fetch_activity_list`
+`fetch_activity`
 
 The collection info request takes the collection Id and city Id as input and provides the brief activities information which are part of that collections, along with the thumbnail and wide-angle image URL in response.
 Note: Some of the activities might overlap in different collections
@@ -125,7 +125,7 @@ Collection info api also take tags as optional params and return the data relate
 ### Payload
 ```
 {
-  "intent":"activity_list",
+  "intent":"fetch_activity",
   "data":{
   	"city_id":"32550",
   	"id":"25270"
@@ -188,7 +188,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ### 1.4 Activity Details
 
 #### Intent
-`fetch_activity_details_ttd`
+`fetch_activity_details`
 
 The activity details info request takes the result’s id and city id as input and provides the detailed activity information along with the thumbnail and wide-angle image URL in response. 
 Note :For FNB details you need to pass activity-id from result's list as mandatory parameter to get the details. If needs to get categories for this activity we need to just pass categories=true in request parameters.
@@ -197,7 +197,7 @@ Note :For FNB details you need to pass activity-id from result's list as mandato
 ### Payload
 ```
 {
-  "intent":"activity_details_ttd",
+  "intent":"fetch_activity_details",
   "data":{
   	"city_id":"32550",
   	"id":"42774"
@@ -308,14 +308,14 @@ If the search was successful, the response body returns an JSON along with the H
 
 #### Intent
 
-`check_availability_ttd`
+`get_available_slots`
 
 The availability request takes the rate id as input and provides the details of activity availability information with date, time slot and availability count.
 
 ### Payload
 ```
 {
-  "intent":"availability_check_ttd",
+  "intent":"get_available_slots",
   "data":{
   		"rate_id":"83219",
   		"scr":"INR",
@@ -564,7 +564,7 @@ If the search was successful, the response body returns an JSON along with the H
 ### 2.2 Restaurants List
 
 #### Intent
-`fetch_restaurants_list_ttd`
+`fetch_collections`
 
 Provides the Cleartrip Restaurant Listing for a City. The search request is a simple HTTP GET request. The query parameters described below should be sent along with the search URL, and the user’s API key in the HTTP headers. A successful response will always return the HTTP status code 200. (Note that a status code of 200 doesn’t necessarily mean that the search result will be returned; but a successful search will always return a status code of 200).
 City list api also take tags as optional params and return the data related to tags, otherwise 400 for requested api.
@@ -572,7 +572,7 @@ City list api also take tags as optional params and return the data related to t
 ### Payload
 ```
 {
-  "intent":"restaurants_list_fnb",
+  "intent":"fetch_collections",
   "data":{
   	"cityName":"bangalore"
   }
@@ -630,7 +630,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ### 2.3 Eatouts List
 
 #### Intent
-`fetch_eatout_list`
+`fetch_restaurants`
 
 The collection info request takes the collection Id and city Id as input and provides the brief activities information which are part of that collections, along with the thumbnail and wide-angle image URL in response.
 Note: Some of the activities might overlap in different collections
@@ -641,7 +641,7 @@ Collection info api also take tags as optional params and return the data relate
 ### Payload
 ```
 {
-  "intent":"eatout_list",
+  "intent":"fetch_restaurants",
   "data":{
   	"city_id":"32550",
   	"id":"25270" 
@@ -703,7 +703,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ### 2.4 Eatout Details
 
 #### Intent
-`fetch_eatout_details_ttd`
+`fetch_eatout_details`
 
 The activity details info request takes the result’s id and city id as input and provides the detailed activity information along with the thumbnail and wide-angle image URL in response. 
 Note :For FNB details you need to pass activity-id from result's list as mandatory parameter to get the details. If needs to get categories for this activity we need to just pass categories=true in request parameters.
@@ -712,7 +712,7 @@ Note :For FNB details you need to pass activity-id from result's list as mandato
 ### Payload
 ```
 {
-  "intent":"eatout_details_fnb",
+  "intent":"fetch_eatout_details",
   "data":{
   	"city_id":"32550",
   	"id":"71864",
@@ -831,14 +831,14 @@ If the search was successful, the response body returns an JSON along with the H
 
 #### Intent
 
-`check_availability_fnb`
+`fetch_available_slots`
 
 The availability request takes the rate id as input and provides the details of activity availability information with date, time slot and availability count.
 
 ### Payload
 ```
 {
-  "intent":"availability_check_fnb",
+  "intent":"fetch_available_slots",
   "data":{
   		"rate_id":"83219",
   		"scr":"INR",
