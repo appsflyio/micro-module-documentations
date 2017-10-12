@@ -19,7 +19,8 @@
     * [Check Availability](#11-book-itenerary)
     * [Create Itinerary](#11-book-itenerary)
     * [Book Itinerary](#11-book-itenerary-1)
-    
+
+--------------------------------------------------------------------------------
 You can find Integration Details [Integration Doc](https://github.com/appsflyio/devkit-javautils)
 --------------------------------------------------------------------------------
 
