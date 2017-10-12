@@ -8,7 +8,7 @@
     * [Search City](#11-book-itenerary)
     * [Check Availability](#11-book-itenerary)
     * [Create Itinerary](#11-book-itenerary)
-    * [Book Itinerary](#11-book-itenerary)
+    * [Book Itinerary](#11-book-itenerary)
   
 2. [Local Eatout](#local-activities)
     * [City List](#11-book-itenerary)
@@ -18,7 +18,8 @@
     * [Search City](#11-book-itenerary)
     * [Check Availability](#11-book-itenerary)
     * [Create Itinerary](#11-book-itenerary)
-    * [Book Itinerary](#11-book-itenerary-1)
+    * [Book Itinerary](#11-book-itenerary-1)
+    
 
 --------------------------------------------------------------------------------
 
