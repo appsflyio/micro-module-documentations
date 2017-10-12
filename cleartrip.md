@@ -1,12 +1,12 @@
 # ClearTrip Micro Services
 
-* Local Activities
+1. Local Activities
 
-** Book Itenerary
+  * Book Itenerary
   
-* Local Eatout
+2. Local Eatout
   
-** Booking Itenerary
+  * Booking Itenerary
 
 
 ## Local Activities
