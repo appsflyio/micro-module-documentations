@@ -64,7 +64,7 @@ microapp_handle : `com.cleartrip.microservices.local.activities`
 }
 ```
 
-### Response Params Description
+#### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
 | CURRENCY | The currency in which the prices of activities are displayed  |
