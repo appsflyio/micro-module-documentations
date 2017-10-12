@@ -18,7 +18,7 @@ microapp_handle : `com.cleartrip.microservices.local.activities`
 #### Intent
 `book_itinerary`
 
-#### Params Description
+#### Request Params Description
 | KEYWORD | DESCRIPTION |
 | ---|--- |
 | ITENERARY_ID | Id of the created itenerary |
