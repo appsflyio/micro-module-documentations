@@ -2,7 +2,7 @@
 
 1. [Local Activities](#local-activities)
 
-    * [Book Itenerary](#11-book-itenerary)
+    * [City List](#11-book-itenerary)
   
 2. [Local Eatout](#local-activities)
   
