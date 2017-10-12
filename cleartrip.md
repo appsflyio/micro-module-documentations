@@ -9,7 +9,7 @@
   2.1 Booking Itenerary
 
 
-## 1. Local Activities
+## Local Activities
 
 ### 1.1 Book Itenerary
 
