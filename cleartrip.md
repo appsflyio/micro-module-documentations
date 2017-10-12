@@ -3,10 +3,24 @@
 1. [Local Activities](#local-activities)
 
     * [City List](#11-book-itenerary)
+    * [Collections List](#11-book-itenerary)
+    * [Activity List](#11-book-itenerary)
+    * [Activity Details](#11-book-itenerary)
+    * [Search City](#11-book-itenerary)
+    * [Check Availability](#11-book-itenerary)
+    * [Create itinerary](#11-book-itenerary)
+    * [Book Itinerary](#11-book-itenerary)
   
 2. [Local Eatout](#local-activities)
   
-    * [Book Itenerary](#11-book-itenerary-1)
+    * [City List](#11-book-itenerary)
+    * [Restaurants List](#11-book-itenerary)
+    * [Eatouts List](#11-book-itenerary)
+    * [Eatout Details](#11-book-itenerary)
+    * [Search City](#11-book-itenerary)
+    * [Check Availability](#11-book-itenerary)
+    * [Create itinerary](#11-book-itenerary)
+    * [Book Itinerary](#11-book-itenerary)
 
 --------------------------------------------------------------------------------
 
