@@ -20,7 +20,7 @@
     * [Create Itinerary](#11-book-itenerary)
     * [Book Itinerary](#11-book-itenerary-1)
     
-You can find Integration Details [a link](https://github.com/appsflyio/devkit-javautils)
+You can find Integration Details [Integration Doc](https://github.com/appsflyio/devkit-javautils)
 --------------------------------------------------------------------------------
 
 ## Local Activities 
