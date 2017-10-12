@@ -18,7 +18,7 @@
     * [Search City](#11-book-itenerary)
     * [Check Availability](#11-book-itenerary)
     * [Create Itinerary](#11-book-itenerary)
-    * [Book Itinerary](#11-book-itenerary)
+    * [Book Itinerary](#11-book-itenerary-1)
 
 --------------------------------------------------------------------------------
 
@@ -485,24 +485,23 @@ Some error messages, you might get for an invalid search request. The HTTP respo
   }
 }
 ```
-### Response Params Description
+### Response Body
+```
 {
-   "success": {
-       "trip_id": "Q1700990001",
-       "vaucher_no": "CAMP-168161"
-   }
+trip{}
 }
-
+```
+### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| success | This tag will contain trip id and voucher number for that successfull booking |
+| trip | JSON object with all trip details |
 
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
 
 | Error message | Description |
 | ---|--- |
-| Please specify the itinerary id |  Itinerary id is a required field. |
+| Booking failed | Booking failed |
 
 ### Status / Error Codes
 
@@ -1008,24 +1007,24 @@ Some error messages, you might get for an invalid search request. The HTTP respo
   }
 }
 ```
-### Response Params Description
-{
-   "success": {
-       "trip_id": "Q1700990001",
-       "vaucher_no": "CAMP-168161"
-   }
-}
 
+### Response Body
+```
+{
+trip{}
+}
+```
+### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| success | This tag will contain trip id and voucher number for that successfull booking |
+| trip | JSON object with all trip details |
 
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
 
 | Error message | Description |
 | ---|--- |
-| Please specify the itinerary id |  Itinerary id is a required field. |
+| Booking failed | Booking failed |
 
 ### Status / Error Codes
 
