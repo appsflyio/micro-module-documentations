@@ -24,6 +24,7 @@
 You can find Integration Details [Integration Doc](https://github.com/appsflyio/devkit-javautils)
 --------------------------------------------------------------------------------
 
+
 ## Local Activities 
 
 microapp_handle : `com.cleartrip.microservices.local.activities`
