@@ -1,9 +1,5 @@
 # MicroServices API Documentation
 
-1. [ClearTrip](#ClearTrip)
-    
-    1.1 [Local Activities](#LocalActivities)
-    
-    1.2 [Local Eatouts](#LocalEatouts)
+1. [ClearTrip](https://github.com/appsflyio/micro-module-documentations/blob/master/cleartrip.md)
 
-2. [HouseJoy](#HouseJoy)
+2. [HouseJoy](https://github.com/appsflyio/micro-module-documentations/blob/master/housejoy.md)
