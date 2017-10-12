@@ -1,10 +1,10 @@
 # ClearTrip Micro Services
 
-1. Local Activities
+1. [Local Activities](#local-activities)
 
     * Book Itenerary
   
-2. Local Eatout
+2. [Local Eatout](#local-activities)
   
     * Book Itenerary
 
@@ -44,7 +44,7 @@ microapp_handle : `com.cleartrip.microservices.local.activities`
 
 --------------------------------------------------------------------------------
 
-## Local eat out 
+## Local eatout 
 microapp_handle : `com.cleartrip.microservices.local.eatouts`
 
 ### 1.1 Book Itenerary
