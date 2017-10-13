@@ -130,58 +130,119 @@ Note: Some of the activities might overlap in different collections
 Example: Wonderla activity might get listed as part of 'Theme Parks' as well as 'Water Sprots' collections.
 Collection info api also take tags as optional params and return the data related to tags, otherwise 400 for requested api.
 
-### Payload
-```
-{
-  "intent":"fetch_activity",
-  "data":{
-  	"city_id":"32550",
-  	"id":"25270"
-    
-  }
-}
-```
 #### Request Params Description
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| city_id | City ID  |
-| id | Collection ID from collection list API |
+| CITY_ID | City ID  |
+| ID | Collection ID from collection list API |
+
+### Payload
+```
+{
+  	"city_id":"${CITY.ID},
+  	"id":"${COLLECTION.ID}"
+}
+```
+### Response Params Description
+| KEY | DESCRIPTION |
+| ---|--- |
+| CURRENCY | The currency in which the prices of activities are displayed  |
+| RESULT | Show list of variant or activities on this collections|
+| RESULT.IMAGE| Image Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url |
+| RESULT.ADDRESS | Full activity address information |
+| RESULT.ADDRESS.ADDRESS_TYPE | Address_type either will be activity address or pickup address of this activity |
+| RESULT.ADDRESS.LOCALITY_NAME | locality name of activity |
+| RESULT.PRICE | Activity price in requested currency format |
+| RESULT.NAME | Name of the activity |
+| RESULT.ACTIVITY_ID | Id of activity|
+| RESULT.ID | Id of variant |
+| RESULT.TIMINGS | Activity or variant start time |
+| RESULT.PUBLISHED_TIME | When this activity or variant published in datetime format |
+| EXTRAS |extras value will present fnb product type only. |
+| EXTRAS.LOCALITIES | list of localities which are all mapped to results.address.locality_name value |
+| EXTRAS.TAG | all different tag type value |
+| COLLECTION | Show collection information in details |
+| DETAILS | This details will be present if we have only one variant or activity in a collections |
 
 ### Response Body 
 ```
 {
-result[],
-activities_near_you{},
-scr : "INR",
-explore_collections{},
-web_url : "/local/gadag/art-craft-in-gadag-collection-1560-1",
-details{},
-collection{}
-sid : "068740f3-741f-4c48-a179-5ea6671aae77"
+  "result": [{
+      "image": ${RESULT.IMAGE},
+      "address": {
+        "country": ${RESULT.ADDRESS.COUNTRY},
+        "address_type": ${RESULT.ADDRESS.ADDRESS_TYPE},
+        "address2": null,
+        "city": ${RESULT.ADDRESS.CITY_NAME}
+        "address1": "Jakkur Aerodrome, Yelahanka Post, Jakkuru",
+        "pin_code": ${RESULT.ADDRESS.PINCODE},
+        "latitude": ${RESULT.ADDRESS.LATITUDE},
+        "state": ${RESULT.ADDRESS.STATE},
+        "longitude": ${RESULT.ADDRESS.LONGITUDE},
+        "city_id": ${RESULT.ADDRESS.CITY_ID},
+        "locality_name": ${RESULT.ADDRESS.LOCALITY_NAME}
+      },
+      "display": {
+        "msg": "",
+        "bnum": null,
+        "bhr": null
+      },
+      "price": ${RESULT.PRICE},
+      "published_time": ${RESULT.PUBLISHED_TIME},
+      "name": ${RESULT.NAME},
+      "activity_id": ${RESULT.ACTIVITY_ID},
+      "timings": ${RESULT.TIMINGS},
+      "rank":${RESULT.RANK},
+      "id": :${RESULT.ID},
+    }...],
+"activities_near_you": {
+    "activities": [{
+        "image": "/camp/images/ai/000/760/126/760126/published/{type}/go-karting-5-laps-at-sarjapur-road-1.jpg?1504334906",
+        "activity_name": "Go Karting Racing Fun",
+        "address": {
+          "country": "India",
+          "address_type": "activity_address",
+          "address2": null,
+          "city": "Bangalore",
+          "address1": "Redriders Sports, Huskur Dommasandra Rd, Kodathi",
+          "pin_code": "560099",
+          "latitude": "12.8779579",
+          "state": "Karnataka",
+          "longitude": "77.72689830000002",
+          "city_id": 32550,
+          "locality_name": "Sarjapur Road"
+        },
+        "price": 413,
+        "published_time": "2017-10-12T01:31:07+05:30",
+        "activity_id": 760126,
+        "timings": "All days from 10 AM to 7 PM",
+        "id": 14374
+      }....],
+	"nearby": false
+  "scr": "${CURRENCY}",
+  "explore_collections": [{
+      "count_text": "2 Experiences",
+      "image": "/camp/images/md/ActivityCollection/000/006/844/6844/{type}/luxury_dining.jpg?1461155952",
+      "product_id": 2,
+      "count": 2,
+      "rank": "9999",
+      "id": 6844,
+      "collection_name": "Luxury Dining",
+      "desc": "Explore fine dining restaurants offering a variety of world-class cuisines",
+      "seo_content": null
+    }...},
+"web_url": "/local/bangalore/aerosports-in-bangalore-collection-18572-1",
+"collection": {
+    "image": ${COLLECTION.IMG},
+    "id": ${COLLECTION.ID},
+    "collection_name": ${COLLECTION.NAME},
+    "desc": ${COLLECTION.DESC},
+    "seo_content": null
+  },
+  "sid": "${SEARCH_ID}"   
 }
 ```
-
-### Response Params Description
-| KEY | DESCRIPTION |
-| ---|--- |
-| currency | The currency in which the prices of activities are displayed  |
-| result | Show list of variant or activities on this collections|
-| result.image| Image Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url |
-| result.address | Full activity address information |
-| result.address.address_type | Address_type either will be activity address or pickup address of this activity |
-| result.address.locality_name | locality name of activity |
-| result.price | Activity price in requested currency format |
-| result.name | Name of the activity |
-| result.activity_id | Id of activity|
-| result.id | Id of variant |
-| result.timings | Activity or variant start time |
-| result.published_time | When this activity or variant published in datetime format |
-| extras |extras value will present fnb product type only. |
-| extras.localities | list of localities which are all mapped to results.address.locality_name value |
-| extras.tag | all different tag type value |
-| collection | Show collection information in details |
-| details | This details will be present if we have only one variant or activity in a collections |
 
 If the search was successful, the response body returns an JSON along with the HTTP status code 200. If any error is encountered during the search, the response body contains an JSON with the root element error_code. See the schema and sample search result JSON for more details.
 
