@@ -1011,17 +1011,17 @@ The user sends an itinerary request to create an itinerary on the cleartrip serv
 ### Response Body
 ```
 {
-	bf : "2",
-	ItineraryId : "1565e1678d-0fed-4028-ab32-4bc78b05e17e",
-	tot : "2",
-	end_time : "2017-10-13T02:00",
-	start_time : "2017-10-13T01:00",
-	tt : "0",
-	dur_m : "0",
-	dur_d : "0",
-	dur_h : "1",
-	crc : "INR",
-	displayNames : "11.39 stack 2 activityy"
+bf : "2",
+ItineraryId : "1565e1678d-0fed-4028-ab32-4bc78b05e17e",
+tot : "2",
+end_time : "2017-10-13T02:00",
+start_time : "2017-10-13T01:00",
+tt : "0",
+dur_m : "0",
+dur_d : "0",
+dur_h : "1",
+crc : "INR",
+displayNames : "11.39 stack 2 activityy"
 }
  ```
 ### Response Params Description
