@@ -1076,11 +1076,11 @@ Some error messages, you might get for an invalid search request. The HTTP respo
   	"itineraryid":"157d88fc41-4253-4517-847a-f30e8f7c956a",
   	"user_details":{
   	 	"title" : "Mr",
-		"firstName": "Ashiq",
-		"lastName" : "Ali",
-		"userName" : "karthik@appsfly.io",
-		"mobileNumber" : "961916308",
-		"bookingRef" : "Appsfly123"
+		"firstName": "John",
+		"lastName" : "Doe",
+		"userName" : "johndoe@example.com",
+		"mobileNumber" : "9999999999",
+		"bookingRef" : "abc"
   	}
   }
 }
