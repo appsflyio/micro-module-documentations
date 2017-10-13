@@ -535,7 +535,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | lastName | User's last name |
 | userName | User's email. Booking confirmation will be sent to this email |
 | mobileNumber | User's mobile number. SMS Confirmation will be sent to this mobile number |
-| bookingRef | Any booking reference value from your end to map with our details |
+| bookingRef | The unique transaction Id generated againt the "itineraryid". This will be generated on the publisher side. The key value pair should be appended to "user_details" in the payload |
 
 #### Payload
 ```
@@ -1011,16 +1011,16 @@ The user sends an itinerary request to create an itinerary on the cleartrip serv
 ### Response Body
 ```
 {
-bf : "2",
-ItineraryId : "1565e1678d-0fed-4028-ab32-4bc78b05e17e",
-tot : "2",
-end_time : "2017-10-13T02:00",
-start_time : "2017-10-13T01:00",
-tt : "0",
-dur_m : "0",
-dur_d : "0",
-dur_h : "1",
-crc : "INR",
+bf : "2"
+ItineraryId : "1565e1678d-0fed-4028-ab32-4bc78b05e17e"
+tot : "2"
+end_time : "2017-10-13T02:00"
+start_time : "2017-10-13T01:00"
+tt : "0"
+dur_m : "0"
+dur_d : "0"
+dur_h : "1"
+crc : "INR"
 displayNames : "11.39 stack 2 activityy"
 }
  ```
