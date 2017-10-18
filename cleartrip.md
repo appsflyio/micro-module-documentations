@@ -7,11 +7,11 @@
     * [Activity Details](#14-activity-details)
     * [Search City](#15-search-city)
     * [Check Availability](#16-check-availability)
-    * [Create Itinerary](#17-create-itenerary)
+    * [Create Itinerary](17-create-itinerary)
     * [Book Itinerary](#18-book-itinerary)
     * [Retrieve Trip](#19-retrieve-trip)
   
-2. [Local Eatout](#local-activities)
+2. [Local Eatout](#local-eatout)
     * [City List](#21-city-list)
     * [Collections List](#22-collections-list)
     * [Restaurants List](#23-restaurants-list)
