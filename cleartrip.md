@@ -13,8 +13,8 @@
   
 2. [Local Eatout](#local-activities)
     * [City List](#21-city-list)
-    * [Restaurants List](#22-restaurants-list)
-    * [Eatouts List](#23-eatouts-list)
+    * [Collections List](#22-collections-list)
+    * [Restaurants List](#23-restaurants-list)
     * [Eatout Details](#24-eatout-details)
     * [Search City](#25-serach-city)
     * [Check Availability](#26-check-availability)
