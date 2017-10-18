@@ -9,7 +9,7 @@
     * [Check Availability](#11-book-itenerary)
     * [Create Itinerary](#11-book-itenerary)
     * [Book Itinerary](#18-book-itinerary)
-    * [Retrieve Trip](#18-book-itinerary)
+    * [Retrieve Trip](#19-retrieve-trip)
   
 2. [Local Eatout](#local-activities)
     * [City List](#11-book-itenerary)
