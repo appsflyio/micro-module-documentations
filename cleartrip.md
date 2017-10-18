@@ -741,7 +741,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | ---|--- |
 | Please specify the city | City is missing. |
  
-### 2.3 Eatouts List
+### 2.3 Restaurants List
 
 #### Intent
 `fetch_restaurants`
@@ -1287,6 +1287,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | Error message | Description |
 | ---|--- |
 | Booking failed | Booking failed |
+
 ### Status / Error Codes
 
 Status Codes 
