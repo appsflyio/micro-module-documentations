@@ -16,7 +16,7 @@
     * [Collections List](#22-collections-list)
     * [Restaurants List](#23-restaurants-list)
     * [Eatout Details](#24-eatout-details)
-    * [Search City](#25-serach-city)
+    * [Search City](#15-serach-city)
     * [Check Availability](#26-check-availability)
     * [Create Itinerary](#27-create-itenerary)
     * [Book Itinerary](#28-book-itenerary)
