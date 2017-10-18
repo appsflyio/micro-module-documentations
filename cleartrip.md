@@ -7,7 +7,7 @@
     * [Activity Details](#14-activity-details)
     * [Search City](#15-search-city)
     * [Check Availability](#16-check-availability)
-    * [Create Itinerary](17-create-itinerary)
+    * [Create Itinerary](#17-create-itinerary)
     * [Book Itinerary](#18-book-itinerary)
     * [Retrieve Trip](#19-retrieve-trip)
   
@@ -18,8 +18,8 @@
     * [Eatout Details](#24-eatout-details)
     * [Search City](#25-search-city)
     * [Check Availability](#26-check-availability)
-    * [Create Itinerary](#27-create-itenerary)
-    * [Book Itinerary](#28-book-itenerary)
+    * [Create Itinerary](#27-create-itinerary)
+    * [Book Itinerary](#28-book-itinerary)
     * [Retrieve Trip](#29-retrieve-trip)
 
 --------------------------------------------------------------------------------
