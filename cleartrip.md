@@ -27,8 +27,6 @@ You can find Integration Details [Integration Doc](https://github.com/appsflyio/
 
 ## Local Activities 
 
-microapp_handle : `com.cleartrip.microservices.local.activities`
-
 ### 1.1 City List
 
 #### Intent
@@ -42,13 +40,13 @@ microapp_handle : `com.cleartrip.microservices.local.activities`
 #### Response Body
 ```
 [
-	{
-		"name":"${CITY_NAME}"
-	}...
+"CITY_NAME": {
+        "ttd": ${TTD},
+        "count": ${COUNT},
+        "fnb":  ${FNB}
+    }...
 ]
  ```
-
-
 ### 1.2 Collections List
 
 #### Intent
@@ -69,49 +67,24 @@ microapp_handle : `com.cleartrip.microservices.local.activities`
 #### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| CURRENCY | The currency in which the prices of activities are displayed  |
-| COLLECTION | List of collections available on this city and it's details |
-| COLLECTION.COUNT | Number of activities available for this collections |
-| COLLECTION.RANK | Sequence order to show on ui |
-| COLLECTION.ID | Collection id of the collection |
-| COLLECTION.CATEGORIES | List of categories id which this collection belong |
-| COLLECTION.NAME | Name of the collection |
-| COLLECTION.DESC | Description of this collection |
-| COLLECTION.IMG | Image Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url|
-| CITY | City name and city id for further use |
-| CITY.NAME | Name of the city |
-| CITY.ID | Id of the city |
-| CATEGORY | List of all categories for these collections |
-| CATEGORY.NAME | Name of the categories |
-| CATEGORY.RANK | Sequence order of list of categories |
-| CATEGORY.ID | Id of category |
+| IMAGE |Image Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url|
+| COUNT | Number of activities available for this collections |
+| COLLECTIONNAME| Name of the collection |
+| COLLECTIONID | Collection id of the collection |
+| CITYID | Id of the city |
 
 #### Response Body 
 ```
-{
-	"scr": "${CURRENCY}",
-	"collections"[{
-		"count":${COLLECTION.COUNT},
-		"rank":${COLLECTION.RANK},
-		"id":${COLLECTION.ID},
-		"categories":${COLLECTION.CATEGORIES},
-		"name":${COLLECTION.NAME},
-		"desc":${COLLECTION.DESC},
-		"image":${COLLECTION.IMG}
-	}...],
-	city{
-		"name":${CITY.NAME},
-		"id":${CITY.ID}
-	},
-	categories[{
-		"name":${CATEGORY.NAME},
-		"rank":${CATEGORY.RANK},
-		"id":${CATEGORY.ID}
-	}...],
-	sid : "${SEARCH_ID}"
-}
+[
+ {
+    "image": "${IMAGE}",
+    "count": ${COUNT},
+    "collectionName": "${COLLECTIONNAME}",
+    "collectionId": ${COLLECTIONID},
+    "cityId": ${CITYID}
+  }...
+]
 ```
-
 
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
@@ -125,126 +98,45 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 #### Intent
 `fetch_activity`
 
-The collection info request takes the collection Id and city Id as input and provides the brief activities information which are part of that collections, along with the thumbnail and wide-angle image URL in response.
-Note: Some of the activities might overlap in different collections
-Example: Wonderla activity might get listed as part of 'Theme Parks' as well as 'Water Sprots' collections.
-Collection info api also take tags as optional params and return the data related to tags, otherwise 400 for requested api.
-
 #### Request Params Description
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| CITY_ID | City ID  |
-| ID | Collection ID from collection list API |
+| CITYID | City ID  |
+| COLLECTIONID | Collection ID from collection list API |    
 
 ### Payload
 ```
 {
-  	"city_id":"${CITY.ID},
-  	"id":"${COLLECTION.ID}"
+  	"cityId":"${CITYID},
+  	"collectionId":"${COLLECTIONID}"
 }
 ```
 ### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| CURRENCY | The currency in which the prices of activities are displayed  |
-| RESULT | Show list of variant or activities on this collections|
-| RESULT.IMAGE| Image Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url |
-| RESULT.ADDRESS | Full activity address information |
-| RESULT.ADDRESS.ADDRESS_TYPE | Address_type either will be activity address or pickup address of this activity |
-| RESULT.ADDRESS.LOCALITY_NAME | locality name of activity |
-| RESULT.PRICE | Activity price in requested currency format |
-| RESULT.NAME | Name of the activity |
-| RESULT.ACTIVITY_ID | Id of activity|
-| RESULT.ID | Id of variant |
-| RESULT.TIMINGS | Activity or variant start time |
-| RESULT.PUBLISHED_TIME | When this activity or variant published in datetime format |
-| EXTRAS |extras value will present fnb product type only. |
-| EXTRAS.LOCALITIES | list of localities which are all mapped to results.address.locality_name value |
-| EXTRAS.TAG | all different tag type value |
-| COLLECTION | Show collection information in details |
-| DETAILS | This details will be present if we have only one variant or activity in a collections |
+| IMAGE|Image Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url |
+| PRICE | Activity price in requested currency format |
+| NAME | Name of the activity |
+| ACTIVITYID | Id of activity |
+| VARIATIONID | Id of variant |
+| CITYID | Id of the city |
+| LOCALITY | locality name of activity |
 
 ### Response Body 
 ```
-{
-  "result": [{
-      "image": ${RESULT.IMAGE},
-      "address": {
-        "country": ${RESULT.ADDRESS.COUNTRY},
-        "address_type": ${RESULT.ADDRESS.ADDRESS_TYPE},
-        "address2": null,
-        "city": ${RESULT.ADDRESS.CITY_NAME}
-        "address1": "Jakkur Aerodrome, Yelahanka Post, Jakkuru",
-        "pin_code": ${RESULT.ADDRESS.PINCODE},
-        "latitude": ${RESULT.ADDRESS.LATITUDE},
-        "state": ${RESULT.ADDRESS.STATE},
-        "longitude": ${RESULT.ADDRESS.LONGITUDE},
-        "city_id": ${RESULT.ADDRESS.CITY_ID},
-        "locality_name": ${RESULT.ADDRESS.LOCALITY_NAME}
-      },
-      "display": {
-        "msg": "",
-        "bnum": null,
-        "bhr": null
-      },
-      "price": ${RESULT.PRICE},
-      "published_time": ${RESULT.PUBLISHED_TIME},
-      "name": ${RESULT.NAME},
-      "activity_id": ${RESULT.ACTIVITY_ID},
-      "timings": ${RESULT.TIMINGS},
-      "rank":${RESULT.RANK},
-      "id": :${RESULT.ID},
-    }...],
-"activities_near_you": {
-    "activities": [{
-        "image": "/camp/images/ai/000/760/126/760126/published/{type}/go-karting-5-laps-at-sarjapur-road-1.jpg?1504334906",
-        "activity_name": "Go Karting Racing Fun",
-        "address": {
-          "country": "India",
-          "address_type": "activity_address",
-          "address2": null,
-          "city": "Bangalore",
-          "address1": "Redriders Sports, Huskur Dommasandra Rd, Kodathi",
-          "pin_code": "560099",
-          "latitude": "12.8779579",
-          "state": "Karnataka",
-          "longitude": "77.72689830000002",
-          "city_id": 32550,
-          "locality_name": "Sarjapur Road"
-        },
-        "price": 413,
-        "published_time": "2017-10-12T01:31:07+05:30",
-        "activity_id": 760126,
-        "timings": "All days from 10 AM to 7 PM",
-        "id": 14374
-      }....],
-	"nearby": false
-  "scr": "${CURRENCY}",
-  "explore_collections": [{
-      "count_text": "2 Experiences",
-      "image": "/camp/images/md/ActivityCollection/000/006/844/6844/{type}/luxury_dining.jpg?1461155952",
-      "product_id": 2,
-      "count": 2,
-      "rank": "9999",
-      "id": 6844,
-      "collection_name": "Luxury Dining",
-      "desc": "Explore fine dining restaurants offering a variety of world-class cuisines",
-      "seo_content": null
-    }...},
-"web_url": "/local/bangalore/aerosports-in-bangalore-collection-18572-1",
-"collection": {
-    "image": ${COLLECTION.IMG},
-    "id": ${COLLECTION.ID},
-    "collection_name": ${COLLECTION.NAME},
-    "desc": ${COLLECTION.DESC},
-    "seo_content": null
-  },
-  "sid": "${SEARCH_ID}"   
-}
+[
+   {
+    "image": "${IMAGE}",
+    "price": ${PRICE},
+    "name": "${NAME}",
+    "activityId": ${ACTIVITYID},
+    "variationId": ${VARIATIONID},
+    "cityid": "${CITYID}",
+    "locality": "${LOCALITY}"
+  }...  
+]
 ```
-
-If the search was successful, the response body returns an JSON along with the HTTP status code 200. If any error is encountered during the search, the response body contains an JSON with the root element error_code. See the schema and sample search result JSON for more details.
 
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
@@ -259,68 +151,158 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 #### Intent
 `fetch_activity_details`
 
-The activity details info request takes the result’s id and city id as input and provides the detailed activity information along with the thumbnail and wide-angle image URL in response. 
-Note :For FNB details you need to pass activity-id from result's list as mandatory parameter to get the details. If needs to get categories for this activity we need to just pass categories=true in request parameters.
-
-
-### Payload
-```
-{
-  "intent":"fetch_activity_details",
-  "data":{
-  	"city_id":"32550",
-  	"id":"42774"
-  }
-}
-```
 #### Request Params Description
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| city_id | City ID  |
-| id |  Selected Activity ID from activity list api |
+| CITYID | City ID  |
+| VARIATIONID | Selected variant id of the activity list api |  
 
-### Response Body 
+### Payload
 ```
 {
-scr : "INR",
-web_url : "/local/gadag/11-39-stack-2-activityy-in-gadag-75742-1",
-details{},
-sid : "b9effb20-981f-4e7e-b46d-d992bd7f1daa"
+  	"cityId":"${CITYID},
+  	"variationId":"${VARIATIONID}"
 }
+
 ```
 
 ### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| currency | The currency in which the prices of activities are displayed  |
-| details | Show complete details of this activity or variant |
-| details.activity_name| Name of the activity |
-| details.published_time | Name of the variant |
-| details.variant_name | Address_type either will be activity address or pickup address of this activity |
-| details.images | List of image for this activity or variant |
-| details.images.img |Image link we can use by adding "http://ui.cltpstatic.com/" or "http://apistaging.cleartrip.com/" as base url and append this image link. |
-| details.address | Full activity address information |
-| details.address.address_type | Address_type either will be activity address or pickup address of this activity |
-| details.open_activity | True or false (true represent unschedule activity and false represent schedule activity) |
-| details.rates | List of all rate available for this activity or variant |
-| details.rates.cheapest | This is cheapest price we will use to show on ui for adult(adt) , child(chd) and group(unit)|
-| details.rates.is_unit_type | True or false, true represent this activity is a group activity |
-| details.rates.rate_id | Id of rates |
-| details.rates.cancellation | List of cancellation policy available |
-| details.rates.cancellation.charge_type | 1 or 2, 1 represent flat cancellation charge in given currency and 2 represent flat cancellation in %. |
-| details.rates.cancellation.lead_hour | From 0 to given hour value |
-| details.rates.cancellation.value | Cancellation value depends on charge_type currency or percentage |
-| details.rates.prices | List of pricing available for this activity like weekday and weekends price |
-| details.description | Full description of this activity or variant |
-| details.trust_marker | Booking details on last few hours |
-| details.one_line_description| One line description of this activity or variant |
-| details.recommended_traveller_type | List of all suitable traveller type. E.g Couple, Kids, Solo, Group etc |
-| details.highlights | List of highlights for an activity |
-| details.variation_id | This is variant id for for this activity |
+| ISGSTAPPLICABLE | True or false (true represent GST applicable and false represent GST not applicable) |
+| IMAGES | List of image for this activity or variant |
+| ORDERNO | No of the order |
+| ACTIVITYID | Id of activity |
+| ACTIVITYNAME |Name of activity |
+| INCLUSIONS | List of inclusions given to the activity |
+| ADDRESS | Full activity address information |
+| ADDRESS.COUNTRY | Country Name of the activity |
+| ADDRESS.ADDRESSTYPE | Address_type either will be activity address or pickup address of this activity |
+| ADDRESS.ADDRESS2 | Secondary if activity exists in more than one place |
+| ADDRESS.CITY | City of the activity |
+| ADDRESS.ADDRESS1 | Primary address of the actvity |
+| ADDRESS.LATITUDE | Latitude of the location of the activity  |
+| ADDRESS.STATE | State of the activity  |
+| ADDRESS.LONGITUDE | Longitude of the location of the activity  |
+| ADDRESS.LOCALITYNAME | locality name of activity  |
+| CHILDAGERESTRICTION | Minimum age of the child for entry  |
+| DESCRIPTION | Full description of this activity or variant |
+| SINGLELINEDESCRIPTION | One line description of this activity or variant |
+| RATINGS.BAD | Array of bad ratings |
+| RATINGS.GOOD | Array of good ratings |
+| RATINGS.AVG_RATING | Average of the overall ratings |
+| RATINGS.RATINGS_COUNT | Total number of the ratings |
+| RATINGS.REVIEW_COUNT | Total no of reviews |
+| RATINGS.REVIEW | Array of review |
+| PUBLISHEDTIME | Date and time of the activity published |
+| MEETINGPOINT | Meeting point of the activity if avaliable else null |
+| PICKUPPOINTS | Pickup points of the activity if avaliable else null |
+| OPEN_ACTIVITY | True or false (true represent unschedule activity and false represent schedule activity) |
+| DRESSCODE | Dress code for the actvity |
+| RATES | List of all rate available for this activity or variant |
+| RATES.CHEAPEST_RATES | This is cheapest price we will use to show on ui for adult(adt) , child(chd) and group(un
+| RATES.IS_UNIT_TYPE | True or false, true represent this activity is a group activity |
+| RATES.RATE_ID | Id of rates |
+| RATES.CANCELLATION | List of cancellation policy available |
+| RATES.CANCELLATION.CHARGE_TYPE | 1 or 2, 1 represent flat cancellation charge in given currency and 2 represent flat cancellation in %. |
+| RATES.CANCELLATION.LEAD_HOUR | From 0 to given hour value |
+| RATES.CANCELLATION.VALUE | Cancellation value depends on charge_type currency or percentage |
+| RATES.PRICES | List of pricing available for this activity like weekday and weekends price |
+| RATES.WHEN | List of time and duration|
+| RATES.WHEN.DURATION | Duration of the activity |
+| RATES.WHEN.ISAVALIABLETODAY | True or false (true represent actvity is avaliable for current date and false represent activity is not avaliable) |
+| RATES.WHEN.EXPAND|True or false (true represent actvity can be expand than the timings and false represent can not expand |
+| RATES.WHEN.TIMINGS | Timings of the activity |
+| RATES.INCLUSIONS | Inclusions for the activity |
+| RATES.RATE_NAME | Name of the rates |
+| RATES.ORDER | Order of the rates |
+| RATES.ABOUT | About the rates |
+| HIGHLGHTS | List of highlights for an activity |
+| MINPRICE | Minimun price os the activity |
+| VARIATIONID | This is variant id for for this activity if avaliable else null |
+| GROUPACTIVITY | True or false (true represent actvity is group activity  and false represent activity is not group activity)|
 
-
-If the search was successful, the response body returns an JSON along with the HTTP status code 200. If any error is encountered during the search, the response body contains an JSON with the root element error_code. See the schema and sample search result JSON for more details.
+### Response Body 
+```
+{
+	"isGstApplicable": true,
+	"images": [{
+      		"order_no": "${ORDERNO}",
+      		"image": "${IMAGE}"
+   	}..],
+	"activityId": ${ACTIVITYID},
+  	"activityName": "${ACTIVITYNAME}",
+	"inclusions": [
+        		"${INCLUSIONS}",...
+		      ],
+        "address": {
+        	   "country": "${COUNTRY}",
+       		   "address_type": "${ADDRESSTYPE}",
+        	   "address2": "${ADDRESS2},
+        	   "city": "${CITY}",
+        	   "address1": "${ADDRESS1}",
+        	   "pin_code": "${PINCODE]",
+                   "latitude": "${LATITUDE}",
+                   "state": "${STATE}",
+                   "longitude": "${LONGITUDE}",
+        	   "city_id": ${CITYID},
+                   "locality_name": "${LOCALITYNAME}"
+    },
+    "childAgeRestriction": "${CHILDAGERESTRICTION}",
+    "description": "${DESCRIPTION}"
+    "singleLineDescription": "${SINGLELINEDESCRIPTION]",
+    "ratings": {
+        "bad": [],
+        "review": ${REVIEW},
+        "avg_rating": ${AVG_RATING},
+        "ratings_count": ${RATINGS_COUNT},
+        "good": [],
+        "reviews_count": ${REVIEW_COUNT}
+    },
+     "publishedTime": "${PUBLISHEDTIME}",
+    "meetingPoint": ${MEETINGPOINT},
+    "pickUpPoints": ${PICKUPPOINTS},
+    "open_activity": ${OPEN_ACTIVITY},
+    "dressCode": [
+    	${DRESSCODE}...],
+    "rates": [
+        {
+            "cheapest_rates": {
+                "adt": ${ADT},
+                "unit": ${UNIT},
+                "chd": ${CHD}
+            },
+            "is_unit_type": false,
+            "cancellation": [
+                {
+                    "charge_type": "${CHARGE_TYPE}",
+                    "rate_id": ${RATE_ID},
+                    "lead_hour": ${LEAD_HOUR},
+                    "value": ${VALUE}
+                }...,
+            ],
+            "rate_id": ${RATE_ID},
+            "about": [${ABOUT}],
+            "prices": [${PRICES}],
+            "when": {
+                "duration": "${DURATION}",
+                "isAvailableToday": ${ISAVALIABLETODAY},
+                "expand": ${EXPAND},
+                "timings": "${TIMINGS}"
+            },
+            "inclusions": [${INCLUSIONS}],
+            "rate_name": "{${RATE_NAME}}",
+            "order": ${ORDER}
+        }
+    ],
+    "highlights": [${HIGHLIGHTS}...,
+    ],
+    "minPrice": ${MINPRICE},
+    "variationId": ${VARIATIONID},
+    "groupActivity": ${GROUPACTIVITY}    
+}
+```
 
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
@@ -336,42 +318,35 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 #### Intent
 
 `search_city`
-
-This API is used to search for a required city
-
-### Payload
-```
-{
-  "intent":"search_city",
-  "data":{
-  	"city":""
-    
-  }
-}
-
-```
 #### Request Params Description
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| city | City string |
+| CITY_NAME | City string |
 
-### Response Body
+### Payload
 ```
-"bangalore": {
-        "ttd": true,
-        "count": 1,
-        "fnb": true
-    },
- ```
+{
+	"city": "${CITY_NAME}"
+}
+
+```
 ### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
 | ttd | Contains True/False based on availability in the corresponding city |
 | fnb | Contains True/False based on availability in the corresponding city |
 
-
-If the search was successful, the response body returns an JSON along with the HTTP status code 200. If any error is encountered during the search, the response body contains an JSON with the root element error_code. See the schema and sample search result JSON for more details.
+### Response Body
+```
+[
+"CITY_NAME": {
+        "ttd": ${TTD},
+        "count": ${COUNT},
+        "fnb":  ${FNB}
+    }...
+]
+ ```
 
 ### 1.6 Check Availability
 
@@ -379,58 +354,47 @@ If the search was successful, the response body returns an JSON along with the H
 
 `get_available_slots`
 
-The availability request takes the rate id as input and provides the details of activity availability information with date, time slot and availability count.
-
-### Payload
-```
-{
-  "intent":"get_available_slots",
-  "data":{
-  		"rate_id":"83219",
-  		"scr":"INR",
-  		"sct":"IN"
-  }
-}
-
-```
 #### Request Params Description
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| rate_id | rateid |
-| scr | Currency of city ex -  INR (india) |
-| sct | City initials ex - IN (india) |
+| RATE_ID | rateid |
 
-### Response Body
+### Payload
 ```
 {
-type : "S"
-crc : "INR"
-inv[]
+  "rateId":"${RATE_ID}"
 }
- ```
+
+```
 ### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| currency | The currency in which the prices of activities are displayed. |
-| type | "S" or "O" Schedule (S) or Open or Schedule(O) activity inventory |
-| cf | convenience fee details |
-| inv | List of inventory are available to book with date respective |
-| inv.time_slot_inventory | List of time slot on different date |
-| inv.time_slot_inventory.min| Minimum count required |
-| inv.time_slot_inventory.max | Maximum count available to book |
-| inv.time_slot_inventory.adult_price | On this time slot adult price |
-| inv.time_slot_inventory.child_price | On this time slot adult price |
-| inv.time_slot_inventory.unit_price| On this time slot group or unit price |
-| inv.time_slot_inventory.status | RATE_UNAVAILABLE("U"), AVAILABLE("A"), EARLY("E"), LATE("L"), BLACK_OUT("B"), SOLD_OUT("S"), INVALID_TIME_SLOT("TS") possible status code |
-| ts | Time slot value on different day or date, ts value will present only for open activity with time slot, and pick time slot value from ts_key value from inv.time_slot_inventory.ts_key |
+| DATE | Avaliable dates for the activity |
+| ADT_PRICE | Adult price for the activity |
+| CHD_PRICE | Child price for the activty |
+| MIN | Minimum count of people |
+| MAX | Maximum count of people |
+| TIMESLOTS | List of time slot on different date |
 
+### Response Body
+```
+[
+ {
+        "date": "${DATE}",
+        "adult_price": "${ADT_PRICE}",
+        "child_price": "${CHD_PRICE}",
+        "min": ${MIN_COUNT},
+        "max": ${MAX_COUNT}",
+        "timeSlots": [${TIMESLOTS]..]
+    }...,
+]
+ ```
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
 
 | Error message | Description |
 | ---|--- |
-
 | Please specify the rate id | rate-id is a required field.|
 
 ### 1.7 Create Itinerary
@@ -439,74 +403,68 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 
 `create_itinerary`
 
-The user sends an itinerary request to create an itinerary on the cleartrip servers. All the relevant booking details are collected from the user. This Create itinerary request will be different for different case like schedule, unschedule, individual, group. Please find the possible case sample request to create itinerary. Once an itinerary has been created, an itinerary-id is assigned. An itinerary is available only for an hour after it has been created. At the end of one hour, an itinerary is expired and it is not possible to fetch the details (unless the itinerary was booked, and at this point it becomes a trip, and its details can be fetched using the retrieve trip service).
-
-### Payload
-```
-{
-  "intent":"create_itinerary",
-  "data":{
-  	"categoryId":"ttd",
-  	"itinerary_data":{
-  		 "date": "10/11/2017",
-    	"activity_id": "807322",
-    	"pricing": "INDIVIDUAL",
-    	"adults": "1",
-    	"rate_id": "43157",
-    	"variantion_id": "4274",
-    	"scr": "INR",
-    	"sct": "IN"
-  	}
-  }
-}
-
-```
 #### Request Params Description
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
 
-| itinerary_data | Object with Itinerary Data |
-| date | Date  |
-| date | Currency of city ex -  INR (india) |
-| activity_id | Activity ID |
-| pricing | Pricing type |
-| adults/ children / units | No of adults / children / units |
-| rate_id | rate_id |
-| variantion_id | Variant ID  |
-| scr | Currency of city ex -  INR (india) |
-| sct | City initials ex - IN (india) |
+| ITINERARYDATA | Object with Itinerary Data |
+| ITINERARYDATA.DATE | Date  |
+| ITINERARYDATA.ACTIVITY_ID | Activity ID |
+| ITINERARYDATA.PRICING | Pricing type |
+| NOOFCHILDREN/ NOOFADULTS / NOOFUNITS | No of adults / children / units |
+| ITINERARYDATA.RATEID | rate_id |
+| ITINERARYDATA.VARIANTID | Variant ID  |
+| ITINERARYDATA.SCR | Currency of city ex -  INR (india) |
+| ITINERARYDATA.SCT | City initials ex - IN (india) |
+
+### Payload
+```
+{
+  "itineraryData":{
+  		 "date":"${DATE}",
+		 "activityId":${ACTIVITY_ID},
+		 "pricing":"${PRICING}",
+		 "rateId":${RATEID},
+		 "variantId":${VARIANTID},
+		 "scr":"${SCR}",
+		 "sct":"${SCT}",
+		 "noOfChildren":${NOOFCHILDREN},
+		 "noOfAdults":${NOOFADULTS}
+  	}
+}
+```
+### Response Params Description
+| KEY | DESCRIPTION |
+| ---|--- |
+| CRC | Currency in which the activity price are display. |
+| DUR_H | Activity duration in hour |
+| DUR_M | Activity duration in mins |
+| DUR_D | activity duration in day |
+| TT | Total tax on this activity |
+| ITINERARYID | Itinerary id of this activity |
+| START_TIME | Start time of this activity |
+| END_TIME | End time of this activity |
+| TOT | Total price of this activity |
+| DISPLAYNAMES | Display name for this activity |
+
 
 ### Response Body
 ```
 {
-	bf : "2",
-	ItineraryId : "1565e1678d-0fed-4028-ab32-4bc78b05e17e",
-	tot : "2",
-	end_time : "2017-10-13T02:00",
-	start_time : "2017-10-13T01:00",
-	tt : "0",
-	dur_m : "0",
-	dur_d : "0",
-	dur_h : "1",
-	crc : "INR",
-	displayNames : "11.39 stack 2 activityy"
+	bf : "${BF}",
+	ItineraryId : "${ITINERARYID}",
+	tot : "${TOT}",
+	end_time : "${END_TIME}",
+	start_time : "${START_TIME}",
+	tt : "${TT}",
+	dur_m : "${DUR_M}",
+	dur_d : "${DUR_D}",
+	dur_h : "${DUR_H}",
+	crc : "${CRC}",
+	displayNames : "${DISPLAYNAMES}"
 }
  ```
-### Response Params Description
-| KEY | DESCRIPTION |
-| ---|--- |
-| crc | Currency in which the activity price are display. |
-| dur_h | Activity duration in hour |
-| dur_m | Activity duration in mins |
-| dur_d | activity duration in day |
-| tt | Total tax on this activity |
-| itineraryId | Itinerary id of this activity |
-| start_time | Start time of this activity |
-| end_time | End time of this activity |
-| tot | Total price of this activity |
-| displayNames | Display name for this activity |
-
 
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
@@ -519,7 +477,6 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | Please specify the rate id | Missing rate id |
 | Please specify the variant id | Missing variant id |
 
-
 ### 1.8 Book Itinerary
 
 #### Intent
@@ -528,42 +485,155 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 #### Request Params Description
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| itineraryid | Id of the created itenerary |
-| user_details | Id of the created user details |
-| title | User Title Ex: Mr or Ms or Mrs |
-| firstName | User's first name |
-| lastName | User's last name |
-| userName | User's email. Booking confirmation will be sent to this email |
-| mobileNumber | User's mobile number. SMS Confirmation will be sent to this mobile number |
-| bookingRef | Any booking reference value from your end to map with our details |
+| USER_DETAILS | Id of the created user details |
+| TITLE | User Title Ex: Mr or Ms or Mrs |
+| FIRSTNAME | User's first name |
+| LASTNAME | User's last name |
+| USERNAME | User's email. Booking confirmation will be sent to this email |
+| MOBILENUMBER | User's mobile number. SMS Confirmation will be sent to this mobile number |
+| BOOKING_REF | Any booking reference value from your end to map with our details |
 
 #### Payload
 ```
 {
-  "intent":"confirm_booking",
-  "data":{
-  	"itineraryid":"157d88fc41-4253-4517-847a-f30e8f7c956a",
-  	"user_details":{
-  	 	"title" : "Mr",
-		"firstName": "John",
-		"lastName" : "Doe",
-		"userName" : "johndoe@example.com",
-		"mobileNumber" : "9999999999",
-		"bookingRef" : "abc"
-  	}
+  "user_details":{
+  	 	"title" : "${TITLE}",
+		"firstName": "${FIRSTNAME}",
+		"lastName" : "${LASTNAME}",
+		"userName" : "${USERNAME}",
+		"mobileNumber" : "${MOBILENUMBER}",
+		"bookingRef" : "${BOOKING_REF}"
   }
-}
-```
-### Response Body
-```
-{
-trip{}
+  
 }
 ```
 ### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
 | trip | JSON object with all trip details |
+
+### Response Body
+```
+{“success”:
+ 	{
+	“trip_id”:“${TRIP_ID}”,
+	“voucher_no”:“${VOUCHER_NO}”
+	}
+}
+```
+
+### Error messages
+Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
+
+| Error message | Description |
+| ---|--- |
+| Booking failed | Booking failed |
+
+### 1.9 Retrieve Trip
+
+#### Intent
+`fetch_booking_details`
+
+#### Request Params Description
+| KEYWORD | DESCRIPTION |
+| ---|--- |
+| TRIP_ID | trip id from book itinerary api |
+
+#### Payload
+```
+{
+  	"tripid": "${TRIP_ID}"
+}
+```
+### Response Params Description
+| KEY | DESCRIPTION |
+| ---|--- |
+| TRIP | JSON object with all trip details |
+| TRIP.ACTIVITY | Number of the activity |
+| TRIP.BOOKING_STATUS | Status of Booking. Either P or F |
+| TRIP.CREATED_AT | Booking created time |
+| TRIP.CURRENCY | The currency in which the prices of activites are displayed |
+| TRIP.END_DATE_TIME | Activity end date and time |
+| TRIP.EXPRESS_CHECKOUT | Express Checkout if avaliable else null|
+| TRIP.HAS_WALLET_PROMOTION | Wallet promotion if available else null |
+| TRIP.HOTEL | Number of hotel for the activity |
+| TRIP.ITINERARY_ID | Itinerary Id of the actvity |
+| TRIP.START_DATE_TIME | Activity start date and time |
+| TRIP.TRIP_KEY | Key of the trip |
+| TRIP.TRIP_NAME | Name of the trip  |
+| TRIP.TRIP_REF | Reference of the trip  |
+| TRIP.TRIP_TYPE | Type of the trip  |
+| TRIP.CONTACT_DETAILS | List of the contact details given in previous bookin itinerary  |
+| TRIP.TRAVELLERSDETAILS | List of the Travellers  |
+| TRIP.ACTIVITIES_BOOKINGS | List of the Activity Location which is already booked  |
+| TRIP.ACTIVITIES_BOOKINGS.ACTIVITY_INFOS | List of activity booking status, voucher number, etc  |
+| TRIP.ACTIVITIES_BOOKINGS.ACTIVITY_ORGANISER_DETAILS | List of details about organiser of the activity  |
+
+### Response Body
+```
+{  "trip": {
+                "activity": ${ACTIVITY},
+                "amount": "${AMOUNT}",
+                "booking_status": "${BOOKING_STATUS}",
+                "created_at": "${CREATED_TIME}",
+                "currency": "${CURRENCY}",
+                "end_date_time": "${END_DATE_TIME}",
+                "express_checkout": ${EXPRESS_CHECKOUT},
+                "has_wallet_promotion": ${HAS_WALLET_PROMOTION},
+                "hotel": ${HOTEL},
+                "itinerary_id": "${ITINERARY_ID}",
+                "start_date_time": "${START_DATE_TIME}",
+                
+                "trip_key": ${TRIP_KEY},
+                "trip_name": "${TRIP_NAME}",
+                "trip_ref": "${TRIP_REF}",
+                "trip_type": ${TRIP_TYPE},
+             
+                "contact_detail": {
+                    "address": "${ADDRESS}"",
+                    "email": "${USERNAME}",
+                    "first_name": "${FIRSTNAME}",
+                    "landline": ${LANDLINE},
+                    "last_name": "${LASTNAME}",
+                    "mobile": "${MOBILENA=UMBER}",
+                    "title": "${TITLE}"
+                },
+                "travellerDetails": {
+                    "ADT": ${NO. OF ADULTS},
+                    "CHD": ${NO. OF CHILDREN}
+                },
+                "gst_charged_by_supplier": true,
+                "gst_charged_by_cleartrip": true,
+                "is_reviewed": false,
+                "activities_bookings": {
+                    "address": "${address}",
+                    "children": ${NO. OF CHILDREN},
+                    "latitude": "${LATITUDE}",
+                    "adults":${NO. OF ADULTS}, ,
+                    "activity_booking_infos": [
+                        {
+                            "booking_status": "${BOOKING_STATUS}",
+                            "pax_info_seq_no": ${PAX_INFO_SEQ_NO},
+                            "seq_no": ${SEQ_NO},
+                            "voucher_number": "${VOUCHER_NUMBER}",
+                            "class_schedules": [
+
+                            ]
+                        }
+                    ],
+                    "activity_organiser_detail": {
+                        "first_name": "${FIRSTNAME}",
+                        "last_name": "${LASTNAME}",
+                        "image_url": "${IMAGE}",
+                        "email": "${USERNAME}",
+                        "phone": "${MOBILENUMBER]"
+                    }
+                    "inclusions": "${INCLUSIONS}",
+                    "longitude": "${LONGITUDE}"
+                }
+            }
+}
+```
 
 ### Error messages
 Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
@@ -604,7 +674,6 @@ All status codes are standard HTTP status codes. The below ones are used in this
 
 ## Local eatout 
 
-microapp_handle : `com.cleartrip.microservices.local.eatouts`
 
 ### 2.1 City List
 
