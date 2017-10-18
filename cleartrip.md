@@ -9,6 +9,7 @@
     * [Check Availability](#11-book-itenerary)
     * [Create Itinerary](#11-book-itenerary)
     * [Book Itinerary](#18-book-itinerary)
+    * [Retrieve Trip](#18-book-itinerary)
   
 2. [Local Eatout](#local-activities)
     * [City List](#11-book-itenerary)
@@ -407,7 +408,6 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-
 | ITINERARYDATA | Object with Itinerary Data |
 | ITINERARYDATA.DATE | Date  |
 | ITINERARYDATA.ACTIVITY_ID | Activity ID |
