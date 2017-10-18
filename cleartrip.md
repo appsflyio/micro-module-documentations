@@ -110,8 +110,8 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ### Payload
 ```
 {
-  	"cityId":"${CITYID},
-  	"collectionId":"${COLLECTIONID}"
+  	"cityId":"${CITY_ID},
+  	"collectionId":"${COLLECTION_ID}"
 }
 ```
 ### Response Params Description
@@ -157,14 +157,14 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| CITYID | City ID  |
-| VARIATIONID | Selected variant id of the activity list api |  
+| CITY_ID | City ID  |
+| VARIATION_ID | Selected variant id of the activity list api |  
 
 ### Payload
 ```
 {
-  	"cityId":"${CITYID},
-  	"variationId":"${VARIATIONID}"
+  	"cityId":"${CITY_ID},
+  	"variationId":"${VARIATION_ID}"
 }
 
 ```
@@ -172,7 +172,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| ISGSTAPPLICABLE | True or false (true represent GST applicable and false represent GST not applicable) |
+| IS_GST_APPLICABLE | True or false (true represent GST applicable and false represent GST not applicable) |
 | IMAGES | List of image for this activity or variant |
 | IMAGES.IMAGE | Image for this activity or variant |
 | IMAGES.ORDER_NO | No of the order |
@@ -229,7 +229,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ### Response Body 
 ```
 {
-	"isGstApplicable": true,
+	"isGstApplicable": ${IS_GST_APPLICABLE},
 	"images": [{
       		"order_no": "${ORDER_NO}",
       		"image": "${IMAGE}"
@@ -301,9 +301,9 @@ Some error messages, you might get for an invalid search request. The HTTP respo
     ],
     "highlights": [${HIGHLIGHTS}...,
     ],
-    "minPrice": ${MINPRICE},
-    "variationId": ${VARIATIONID},
-    "groupActivity": ${GROUPACTIVITY}    
+    "minPrice": ${MIN_PRICE},
+    "variationId": ${VARIATION_ID},
+    "groupActivity": ${GROUP_ACTIVITY}    
 }
 ```
 
@@ -410,11 +410,11 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| ITINERARYDATA | Object with Itinerary Data |
+| ITINERARY_DATA | Object with Itinerary Data |
 | ITINERARYDATA.DATE | Date  |
 | ITINERARYDATA.ACTIVITY_ID | Activity ID |
 | ITINERARYDATA.PRICING | Pricing type |
-| NOOFCHILDREN/ NOOFADULTS / NOOFUNITS | No of adults / children / units |
+| NO_OF_CHILDREN/ NO_OF_ADULTS / NO_OF_UNITS | No of adults / children / units |
 | ITINERARYDATA.RATEID | rate_id |
 | ITINERARYDATA.VARIANTID | Variant ID  |
 | ITINERARYDATA.SCR | Currency of city ex -  INR (india) |
@@ -431,8 +431,8 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 		 "variantId":${VARIANTID},
 		 "scr":"${SCR}",
 		 "sct":"${SCT}",
-		 "noOfChildren":${NOOFCHILDREN},
-		 "noOfAdults":${NOOFADULTS}
+		 "noOfChildren":${NO_OF_CHILDREN},
+		 "noOfAdults":${NO_OF_ADULTS}
   	}
 }
 ```
@@ -444,18 +444,18 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | DUR_M | Activity duration in mins |
 | DUR_D | activity duration in day |
 | TT | Total tax on this activity |
-| ITINERARYID | Itinerary id of this activity |
+| ITINERARY_ID | Itinerary id of this activity |
 | START_TIME | Start time of this activity |
 | END_TIME | End time of this activity |
 | TOT | Total price of this activity |
-| DISPLAYNAMES | Display name for this activity |
+| DISPLAY_NAMES | Display name for this activity |
 
 
 ### Response Body
 ```
 {
 	bf : "${BF}",
-	ItineraryId : "${ITINERARYID}",
+	ItineraryId : "${ITINERARY_ID}",
 	tot : "${TOT}",
 	end_time : "${END_TIME}",
 	start_time : "${START_TIME}",
@@ -464,7 +464,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 	dur_d : "${DUR_D}",
 	dur_h : "${DUR_H}",
 	crc : "${CRC}",
-	displayNames : "${DISPLAYNAMES}"
+	displayNames : "${DISPLAY_NAMES}"
 }
  ```
 
@@ -489,10 +489,10 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | ---|--- |
 | USER_DETAILS | Id of the created user details |
 | TITLE | User Title Ex: Mr or Ms or Mrs |
-| FIRSTNAME | User's first name |
-| LASTNAME | User's last name |
-| USERNAME | User's email. Booking confirmation will be sent to this email |
-| MOBILENUMBER | User's mobile number. SMS Confirmation will be sent to this mobile number |
+| FIRS_TNAME | User's first name |
+| LAST_NAME | User's last name |
+| USER_NAME | User's email. Booking confirmation will be sent to this email |
+| MOBILE_NUMBER | User's mobile number. SMS Confirmation will be sent to this mobile number |
 | BOOKING_REF | Any booking reference value from your end to map with our details |
 
 #### Payload
@@ -500,10 +500,10 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 {
   "user_details":{
   	 	"title" : "${TITLE}",
-		"firstName": "${FIRSTNAME}",
-		"lastName" : "${LASTNAME}",
-		"userName" : "${USERNAME}",
-		"mobileNumber" : "${MOBILENUMBER}",
+		"firstName": "${FIRST_NAME}",
+		"lastName" : "${LAST_NAME}",
+		"userName" : "${USER_NAME}",
+		"mobileNumber" : "${MOBILE_NUMBER}",
 		"bookingRef" : "${BOOKING_REF}"
   }
   
@@ -566,7 +566,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | TRIP.TRIP_REF | Reference of the trip  |
 | TRIP.TRIP_TYPE | Type of the trip  |
 | TRIP.CONTACT_DETAILS | List of the contact details given in previous bookin itinerary  |
-| TRIP.TRAVELLERSDETAILS | List of the Travellers  |
+| TRIP.TRAVELLERS_DETAILS | List of the Travellers  |
 | TRIP.ACTIVITIES_BOOKINGS | List of the Activity Location which is already booked  |
 | TRIP.ACTIVITIES_BOOKINGS.ACTIVITY_INFOS | List of activity booking status, voucher number, etc  |
 | TRIP.ACTIVITIES_BOOKINGS.ACTIVITY_ORGANISER_DETAILS | List of details about organiser of the activity  |
@@ -593,23 +593,23 @@ Some error messages, you might get for an invalid search request. The HTTP respo
              
                 "contact_detail": {
                     "address": "${ADDRESS}"",
-                    "email": "${USERNAME}",
-                    "first_name": "${FIRSTNAME}",
+                    "email": "${USER_NAME}",
+                    "first_name": "${FIRST_NAME}",
                     "landline": ${LANDLINE},
-                    "last_name": "${LASTNAME}",
-                    "mobile": "${MOBILENA=UMBER}",
+                    "last_name": "${LAST_NAME}",
+                    "mobile": "${MOBILE_NUMBER}",
                     "title": "${TITLE}"
                 },
                 "travellerDetails": {
-                    "ADT": ${NO. OF ADULTS},
-                    "CHD": ${NO. OF CHILDREN}
+                    "ADT": ${NO_OF_ADULTS},
+                    "CHD": ${NO_OF_CHILDREN}
                 },
                 "gst_charged_by_supplier": true,
                 "gst_charged_by_cleartrip": true,
                 "is_reviewed": false,
                 "activities_bookings": {
-                    "address": "${address}",
-                    "children": ${NO. OF CHILDREN},
+                    "address": "${ADDRESS}",
+                    "children": ${NO_OF_CHILDREN},
                     "latitude": "${LATITUDE}",
                     "adults":${NO. OF ADULTS}, ,
                     "activity_booking_infos": [
@@ -624,11 +624,11 @@ Some error messages, you might get for an invalid search request. The HTTP respo
                         }
                     ],
                     "activity_organiser_detail": {
-                        "first_name": "${FIRSTNAME}",
-                        "last_name": "${LASTNAME}",
+                        "first_name": "${FIRST_NAME}",
+                        "last_name": "${LAST_NAME}",
                         "image_url": "${IMAGE}",
-                        "email": "${USERNAME}",
-                        "phone": "${MOBILENUMBER]"
+                        "email": "${USER_NAME}",
+                        "phone": "${MOBILE_NUMBER]"
                     }
                     "inclusions": "${INCLUSIONS}",
                     "longitude": "${LONGITUDE}"
@@ -1054,11 +1054,11 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 
 | KEYWORD | DESCRIPTION |
 | ---|--- |
-| ITINERARYDATA | Object with Itinerary Data |
+| ITINERARY_DATA | Object with Itinerary Data |
 | ITINERARYDATA.DATE | Date  |
 | ITINERARYDATA.ACTIVITY_ID | Activity ID |
 | ITINERARYDATA.PRICING | Pricing type |
-| NOOFCHILDREN/ NOOFADULTS / NOOFUNITS | No of adults / children / units |
+| NOOFCHILDREN/ NO_OF_ADULTS / NO_OF_UNITS | NO_OF_CHILDREN / children / units |
 | ITINERARYDATA.RATEID | rate_id |
 | ITINERARYDATA.VARIANTID | Variant ID  |
 | ITINERARYDATA.SCR | Currency of city ex -  INR (india) |
@@ -1071,12 +1071,12 @@ Some error messages, you might get for an invalid search request. The HTTP respo
   		 "date":"${DATE}",
 		 "activityId":${ACTIVITY_ID},
 		 "pricing":"${PRICING}",
-		 "rateId":${RATEID},
-		 "variantId":${VARIANTID},
+		 "rateId":${RATE_ID},
+		 "variantId":${VARIANT_ID},
 		 "scr":"${SCR}",
 		 "sct":"${SCT}",
-		 "noOfChildren":${NOOFCHILDREN},
-		 "noOfAdults":${NOOFADULTS}
+		 "noOfChildren":${NO_OF_CHILDREN},
+		 "noOfAdults":${NO_OF_ADULTS}
   	}
 }
 ```
@@ -1088,18 +1088,18 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | DUR_M | Activity duration in mins |
 | DUR_D | activity duration in day |
 | TT | Total tax on this activity |
-| ITINERARYID | Itinerary id of this activity |
+| ITINERARY_ID | Itinerary id of this activity |
 | START_TIME | Start time of this activity |
 | END_TIME | End time of this activity |
 | TOT | Total price of this activity |
-| DISPLAYNAMES | Display name for this activity |
+| DISPLAY_NAMES | Display name for this activity |
 
 
 ### Response Body
 ```
 {
 	bf : "${BF}",
-	ItineraryId : "${ITINERARYID}",
+	ItineraryId : "${ITINERARY_ID}",
 	tot : "${TOT}",
 	end_time : "${END_TIME}",
 	start_time : "${START_TIME}",
@@ -1108,7 +1108,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 	dur_d : "${DUR_D}",
 	dur_h : "${DUR_H}",
 	crc : "${CRC}",
-	displayNames : "${DISPLAYNAMES}"
+	displayNames : "${DISPLAY_NAMES}"
 }
  ```
 
@@ -1133,10 +1133,10 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 | ---|--- |
 | USER_DETAILS | Id of the created user details |
 | TITLE | User Title Ex: Mr or Ms or Mrs |
-| FIRSTNAME | User's first name |
-| LASTNAME | User's last name |
-| USERNAME | User's email. Booking confirmation will be sent to this email |
-| MOBILENUMBER | User's mobile number. SMS Confirmation will be sent to this mobile number |
+| FIRST_NAME | User's first name |
+| LAST_NAME | User's last name |
+| USER_NAME | User's email. Booking confirmation will be sent to this email |
+| MOBILE_NUMBER | User's mobile number. SMS Confirmation will be sent to this mobile number |
 | BOOKING_REF | Any booking reference value from your end to map with our details |
 
 #### Payload
@@ -1144,10 +1144,10 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 {
   "user_details":{
   	 	"title" : "${TITLE}",
-		"firstName": "${FIRSTNAME}",
-		"lastName" : "${LASTNAME}",
-		"userName" : "${USERNAME}",
-		"mobileNumber" : "${MOBILENUMBER}",
+		"firstName": "${FIRST_NAME}",
+		"lastName" : "${LAST_NAME}",
+		"userName" : "${USER_NAME}",
+		"mobileNumber" : "${MOBILE_NUMBER}",
 		"bookingRef" : "${BOOKING_REF}"
   }
   
@@ -1237,23 +1237,23 @@ Some error messages, you might get for an invalid search request. The HTTP respo
              
                 "contact_detail": {
                     "address": "${ADDRESS}"",
-                    "email": "${USERNAME}",
-                    "first_name": "${FIRSTNAME}",
+                    "email": "${USER_NAME}",
+                    "first_name": "${FIRST_NAME}",
                     "landline": ${LANDLINE},
-                    "last_name": "${LASTNAME}",
-                    "mobile": "${MOBILENA=UMBER}",
+                    "last_name": "${LAST_NAME}",
+                    "mobile": "${MOBILE_NUMBER}",
                     "title": "${TITLE}"
                 },
                 "travellerDetails": {
-                    "ADT": ${NO. OF ADULTS},
-                    "CHD": ${NO. OF CHILDREN}
+                    "ADT": ${NO_OF_ADULTS},
+                    "CHD": ${NO_OF_CHILDREN}
                 },
                 "gst_charged_by_supplier": true,
                 "gst_charged_by_cleartrip": true,
                 "is_reviewed": false,
                 "activities_bookings": {
-                    "address": "${address}",
-                    "children": ${NO. OF CHILDREN},
+                    "address": "${ADDRESS}",
+                    "children": ${NO_OF_CHILDREN},
                     "latitude": "${LATITUDE}",
                     "adults":${NO. OF ADULTS}, ,
                     "activity_booking_infos": [
@@ -1268,11 +1268,11 @@ Some error messages, you might get for an invalid search request. The HTTP respo
                         }
                     ],
                     "activity_organiser_detail": {
-                        "first_name": "${FIRSTNAME}",
-                        "last_name": "${LASTNAME}",
+                        "first_name": "${FIRST_NAME}",
+                        "last_name": "${LAST_NAME}",
                         "image_url": "${IMAGE}",
-                        "email": "${USERNAME}",
-                        "phone": "${MOBILENUMBER]"
+                        "email": "${USER_NAME}",
+                        "phone": "${MOBILE_NUMBER]"
                     }
                     "inclusions": "${INCLUSIONS}",
                     "longitude": "${LONGITUDE}"
