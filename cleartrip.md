@@ -983,7 +983,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ### Response Params Description
 | KEY | DESCRIPTION |
 | ---|--- |
-| ttd | Contains True/False based on availability in the corresponding city |
+| ttd| Contains True/False based on availability in the corresponding city |
 | fnb | Contains True/False based on availability in the corresponding city |
 
 ### Response Body
