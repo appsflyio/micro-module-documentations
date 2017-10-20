@@ -611,7 +611,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
                     "address": "${ADDRESS}",
                     "children": ${NO_OF_CHILDREN},
                     "latitude": "${LATITUDE}",
-                    "adults":${NO. OF ADULTS}, ,
+                    "adults":${NO. OF ADULTS, ,
                     "activity_booking_infos": [
                         {
                             "booking_status": "${BOOKING_STATUS}",
