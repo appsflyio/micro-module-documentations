@@ -804,7 +804,7 @@ Some error messages, you might get for an invalid search request. The HTTP respo
 ```
 
 ### Error messages
-Some error messages, you might get for an invalid search request. The HTTP response code in this case will be 400.
+Some error messages, you might get for an invalid search request.The HTTP response code in this case will be 400.
 
 | Error message | Description |
 | ---|--- |
